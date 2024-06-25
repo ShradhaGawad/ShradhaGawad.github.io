@@ -1,12 +1,13 @@
-# Shradha Gawad
 ### ABOUT
 Passionate for continuous growth and innovation, I am transitioning from a successful 6-year tenure in QA Analyst and Customer service roles to pursue my passion for working with data. Eager to work on new technologies, I aspire to provide insights and assist your team in decision making.
+
 ### EDUCATION 
 - University Of Maryland Baltimore County (UMBC), Maryland, US
 MS in Information Science/Systems with specialization in Data Science, GPA 4.0		
 - University Of Mumbai, Maharashtra, India
 BE in Electronics and Telecommunication Engineering, GPA 3.6
-### SKILLS
+
+### SKILLS 
 -	Programming Languages - Python, SQL, PL/SQL, C 
 -	Machine Learning - Linear Regression, Decision Tree Classification, SVM, Ridge Regression
 -	Libraries/Frameworks - Numpy, Pandas, Sklearn, Matplotlib, NLTK

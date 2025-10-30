@@ -7,32 +7,31 @@ document.addEventListener('DOMContentLoaded', function() {
   const successMsg = form.querySelector('.sent-message');
 
   form.addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // stop page from reloading
+
+    // Show loading spinner
     loading.classList.add('d-block');
     errorMsg.classList.remove('d-block');
     successMsg.classList.remove('d-block');
 
-    const formData = new FormData(form); // use FormData (URL-encoded)
+    // Create the data we’ll send
+    const formData = new FormData(form);
 
+    // Send it to Google
     fetch(webAppUrl, {
       method: 'POST',
+      mode: 'no-cors',   // <--- This line prevents the CORS error
       body: formData
-      // do NOT set Content-Type manually
     })
-    .then(response => response.text())
-    .then(result => {
+    .then(() => {
+      // Even if the browser can’t read the reply, we show success
       loading.classList.remove('d-block');
-      if (result.trim() === "OK") {
-        successMsg.classList.add('d-block');
-        form.reset();
-      } else {
-        errorMsg.innerHTML = result;
-        errorMsg.classList.add('d-block');
-      }
+      successMsg.classList.add('d-block');
+      form.reset();
     })
-    .catch(error => {
+    .catch(() => {
       loading.classList.remove('d-block');
-      errorMsg.innerHTML = error;
+      errorMsg.innerHTML = "There was a problem sending your message.";
       errorMsg.classList.add('d-block');
     });
   });

@@ -7,24 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const successMsg = form.querySelector('.sent-message');
 
   form.addEventListener('submit', function(e) {
-    e.preventDefault(); // important: stop page reload
-
-    // Show loading, hide messages
+    e.preventDefault();
     loading.classList.add('d-block');
     errorMsg.classList.remove('d-block');
     successMsg.classList.remove('d-block');
 
-    const formData = {
-      name: form.name.value,
-      email: form.email.value,
-      subject: form.subject.value,
-      message: form.message.value
-    };
+    const formData = new FormData(form); // use FormData (URL-encoded)
 
     fetch(webAppUrl, {
       method: 'POST',
-      body: JSON.stringify(formData),
-      headers: { 'Content-Type': 'application/json' }
+      body: formData
+      // do NOT set Content-Type manually
     })
     .then(response => response.text())
     .then(result => {
